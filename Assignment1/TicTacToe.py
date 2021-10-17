@@ -1,3 +1,6 @@
+"""
+Hometask №1: Making a TicTacToe game class
+"""
 class TicTacToe:
     grid = []
     count = {}
