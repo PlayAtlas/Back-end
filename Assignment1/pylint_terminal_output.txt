@@ -424,4 +424,14 @@ TicTacToe.py:54:4: C0116: Missing function or method docstring (missing-function
 ------------------------------------------------------------------
 Your code has been rated at 8.91/10 (previous run: 8.12/10, +0.78)
 
-playatlas@MacBook-Pro-Rinat Assignment1 % 
+playatlas@MacBook-Pro-Rinat Assignment1 % pylint tictactoe.py
+************* Module tictactoe
+tictactoe.py:4:0: C0115: Missing class docstring (missing-class-docstring)
+tictactoe.py:9:4: C0116: Missing function or method docstring (missing-function-docstring)
+tictactoe.py:18:4: C0116: Missing function or method docstring (missing-function-docstring)
+tictactoe.py:32:4: C0116: Missing function or method docstring (missing-function-docstring)
+tictactoe.py:57:4: C0116: Missing function or method docstring (missing-function-docstring)
+
+------------------------------------------------------------------
+Your code has been rated at 9.22/10 (previous run: 9.06/10, +0.16)
+
