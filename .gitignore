@@ -1,3 +1,5 @@
 .DS_Store
 notes.txt
 Assignment1/.DS_Store
+__pycache__/
+test_tictactoe.pyc

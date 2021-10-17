@@ -2,7 +2,7 @@
 Hometask №1: Making a TicTacToe game class
 """
 class TicTacToe:
-    grid = []
+    grid = [' '] * 9
     count = {}
     player = 'X'
 
@@ -16,14 +16,18 @@ class TicTacToe:
         print('---------')
 
     def validate_input(self, inp):
-        coordinates = inp.split()
-        if len(coordinates) != 2:
+        if not isinstance(inp, str):
             print('Enter two numbers divided by one space')
             return False
-        x_coord = int(coordinates[0]) - 1
-        y_coord = int(coordinates[1]) - 1
+        coords = inp.split()
+        if len(coords) != 2 or not coords[0].isdigit() or not coords[1].isdigit():
+            print('Enter two whole positive numbers divided by one space')
+            return False
+        x_coord = int(coords[0]) - 1
+        y_coord = int(coords[1]) - 1
         if x_coord > 2 or x_coord < 0 or y_coord > 2 or y_coord < 0:
             print('Coordinates should be from 1 to 3!')
+            return False
         if self.grid[y_coord*3 + x_coord] == 'X' or self.grid[y_coord*3 + x_coord] == 'O':
             print('This cell is occupied! Choose another one!')
             return False
@@ -37,11 +41,11 @@ class TicTacToe:
             # validating input
             play = input('Enter the coordinates:')
             while self.validate_input(play) is False:
-                play = input('Enter the coordinates:')
+                play = input('Enter the coords:')
             # pulling coords out of input
-            coordinates = play.split()
-            x_coord = int(coordinates[0]) - 1
-            y_coord = int(coordinates[1]) - 1
+            coords = play.split()
+            x_coord = int(coords[0]) - 1
+            y_coord = int(coords[1]) - 1
             # making the play
             self.grid[y_coord*3+x_coord] = self.player
             self.count[self.player] += 1
