@@ -69,7 +69,7 @@ class TicTacToe:
                 if (self.grid[i*3] == self.grid[i*3+1] == self.grid[i*3+2] != ' '
 				or self.grid[i] == self.grid[i+3] == self.grid[i+6] != ' '):
                     if winner == 0:
-                        winner = self.grid[i*3]
+                        winner = self.player
         if winner == 0 and self.count['X'] + self.count['O'] == 9:
             print('Draw')
             return True

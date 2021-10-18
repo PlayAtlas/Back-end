@@ -457,4 +457,3 @@ tictactoe.py:61:4: C0116: Missing function or method docstring (missing-function
 
 ------------------------------------------------------------------
 Your code has been rated at 9.26/10 (previous run: 9.12/10, +0.15)
-

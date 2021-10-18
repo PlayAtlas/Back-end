@@ -13,13 +13,18 @@ class TestInputValidation(unittest.TestCase):
         self.assertFalse(tictac.validate_input('4 2'))
         self.assertFalse(tictac.validate_input('1 5 6 2'))
         self.assertFalse(tictac.validate_input([2, 1]))
+        self.assertFalse(tictac.validate_input('0, 1'))
+        self.assertFalse(tictac.validate_input('2'))
         self.assertFalse(tictac.validate_input([1, 2, 3]))
         self.assertFalse(tictac.validate_input([55, ]))
         self.assertFalse(tictac.validate_input('he he'))
 
-    #def test_game(self):
-     #   tictac = tictactoe.TicTacToe()
-        #self.assertEqual(tictac.start_game(), 'X wins')
+    
+#дописать проверку check_winner
+    def test_game(self):
+        tictac = tictactoe.TicTacToe()
+        tictac.grid = ['X', '0', ' ', 'X', '0', ' ', ' ', '0', 'X']
+        self.assertEqual(tictac.check_winner(), True)
 
 
 
