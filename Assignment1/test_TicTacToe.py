@@ -30,8 +30,5 @@ class TestInputValidation(unittest.TestCase):
         self.assertEqual(tictac.check_winner(), 'Draw')
         
 
-
-
-
 if __name__ == '__main__':
     unittest.main()
