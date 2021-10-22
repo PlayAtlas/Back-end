@@ -19,12 +19,17 @@ class TestInputValidation(unittest.TestCase):
         self.assertFalse(tictac.validate_input([55, ]))
         self.assertFalse(tictac.validate_input('he he'))
 
-    
-#дописать проверку check_winner
     def test_game(self):
-        tictac = tictactoe.TicTacToe()
-        tictac.grid = ['X', '0', ' ', 'X', '0', ' ', ' ', '0', 'X']
-        self.assertEqual(tictac.check_winner(), True)
+        tictac = tictactoe.TicTacToe(['X', 'O', ' ', 'X', 'O', ' ', ' ', 'O', 'X'], 'O')
+        self.assertEqual(tictac.check_winner(), 'O')
+
+        tictac = tictactoe.TicTacToe(['X', ' ', 'O', 'O', 'X', ' ', 'X', 'O', 'X'], 'X')
+        self.assertEqual(tictac.check_winner(), 'X')
+
+        tictac = tictactoe.TicTacToe(['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'], 'X', {'X': 5, 'O': 4})
+        self.assertEqual(tictac.check_winner(), 'Draw')
+        
+
 
 
 

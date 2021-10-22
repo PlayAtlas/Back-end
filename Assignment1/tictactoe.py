@@ -2,10 +2,15 @@
 Hometask №1: Making a TicTacToe game class
 """
 class TicTacToe:
-    grid = [' '] * 9
+    grid = []
     count = {}
-    player = 'X'
+    player = ''
 
+    def __init__(self, inpgrid = [' '] * 9, inpplayer = 'X', inpcount = {}):
+        self.grid = inpgrid
+        self.player = inpplayer
+        self.count = inpcount
+    
     def show_board(self):
         print('---------')
         for i in range(3):
@@ -35,7 +40,7 @@ class TicTacToe:
 
     def start_game(self):
         self.grid = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-        self.count = {'X': 0, 'O': 0, ' ': 0}
+        self.count = {'X': 0, 'O': 0}
         while True:
             self.show_board()
             # validating input
@@ -71,12 +76,14 @@ class TicTacToe:
                     if winner == 0:
                         winner = self.player
         if winner == 0 and self.count['X'] + self.count['O'] == 9:
-            print('Draw')
-            return True
+            winner = 'Draw'
+            self.show_board()
+            print(winner)
+            return winner
         if winner != 0:
             self.show_board()
             print(winner, 'wins')
-            return True
+            return winner
         return 0
 
 
