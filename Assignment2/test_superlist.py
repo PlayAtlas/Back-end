@@ -16,11 +16,28 @@ class TestInputValidation(unittest.TestCase):
 
     def test_comparisons(self): #сделать для списков
         self.assertTrue(sl.CustomList([1, 2]) < sl.CustomList([2, 3, 5]))
+        self.assertTrue([1, 2] < sl.CustomList([2, 3, 5]))
+        self.assertTrue(sl.CustomList([1, 2]) < [2, 3, 5])
+
         self.assertTrue(sl.CustomList([1, 2]) <= sl.CustomList([2, 3, 5]))
-        self.assertTrue(sl.CustomList([1, 2]) == sl.CustomList([2, 1, 0]))        
-        self.assertTrue(sl.CustomList([55,]) > sl.CustomList([2, 3, 5]))        
+        self.assertTrue([1, 2] <= sl.CustomList([2, 3, 5]))
+        self.assertTrue(sl.CustomList([1, 2]) <= [2, 3, 5])
+
+        self.assertTrue(sl.CustomList([1, 2]) == sl.CustomList([2, 1, 0]))
+        self.assertTrue([1, 2] == sl.CustomList([2, 1, 0]))
+        self.assertTrue(sl.CustomList([1, 2]) == [2, 1, 0])
+
+        self.assertTrue(sl.CustomList([55,]) > sl.CustomList([2, 3, 5]))
+        self.assertTrue([55,] > sl.CustomList([2, 3, 5]))
+        self.assertTrue(sl.CustomList([55,]) > [2, 3, 5])
+
         self.assertTrue(sl.CustomList([56, 57]) >= sl.CustomList([1, 55, 55, 2]))
+        self.assertTrue([56, 57] >= sl.CustomList([1, 55, 55, 2]))
+        self.assertTrue(sl.CustomList([56, 57]) >= [1, 55, 55, 2])
+
         self.assertTrue(sl.CustomList([1, 2]) != sl.CustomList([2, 3, 5]))
+        self.assertTrue([1, 2] != sl.CustomList([2, 3, 5]))
+        self.assertTrue(sl.CustomList([1, 2]) != [2, 3, 5])
 
 if __name__ == '__main__':
     unittest.main()

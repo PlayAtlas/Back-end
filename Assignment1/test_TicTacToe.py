@@ -26,6 +26,9 @@ class TestInputValidation(unittest.TestCase):
         tictac = tictactoe.TicTacToe(['X', ' ', 'O', 'O', 'X', ' ', 'X', 'O', 'X'], 'X')
         self.assertEqual(tictac.check_winner(), 'X')
 
+        tictac = tictactoe.TicTacToe(['X', ' ', 'X', 'X', 'O', 'X', 'O', 'O', 'O'], 'O')
+        self.assertEqual(tictac.check_winner(), 'O')
+
         tictac = tictactoe.TicTacToe(['X', 'O', 'X', 'X', 'O', 'O', 'O', 'X', 'X'], 'X', {'X': 5, 'O': 4})
         self.assertEqual(tictac.check_winner(), 'Draw')
         

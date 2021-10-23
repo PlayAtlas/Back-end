@@ -1,3 +1,6 @@
+"""
+Hometask №2: Making a custom list class
+"""
 class CustomList(list):
     def __add__(self, other):
         sum = CustomList()
