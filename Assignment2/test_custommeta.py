@@ -11,9 +11,9 @@ class TestInputValidation(unittest.TestCase):
 
     def test_errors(self):
         inst = cm.CustomClass()
-        #self.assertRaises(AttributeError, inst.x)
-        #self.assertRaises(AttributeError, inst.val)
-        self.assertRaises(AttributeError, inst.line)
+        self.assertRaises(AttributeError, lambda: inst.x)
+        self.assertRaises(AttributeError, lambda: inst.val)
+        self.assertRaises(AttributeError, lambda: inst.line())
 
 if __name__ == '__main__':
     unittest.main()
