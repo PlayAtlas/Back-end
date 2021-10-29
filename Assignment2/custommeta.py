@@ -2,17 +2,8 @@
 Hometask №2: Making a custom metaclass
 """
 class CustomMeta(type):
-    """def __init__(cls):
-        def __setattr__(cls, name, value):
-            print(cls.__dict__["custom_" + name])
-            cls.__dict__["custom_" + name] = value
-        return super().__init__(cls)"""
-    def __call__(cls):
-        """def __setattr__(cls, name, value):
-            print('--setattr--\n\n\n')
-            print(cls.__dict__["custom_" + name])
-            cls.__dict__["custom_" + name] = value"""
-        obj = type.__call__(cls)
+    def __call__(cls, *args,  **kwargs):
+        obj = super().__call__(cls)
         namespace = obj.__dict__
         #print(namespace)
         new_namespace = {}
