@@ -1,8 +1,14 @@
 def app(environ, start_response):
-# бизнес-логика
-    data = b"Hello, world!\n"
+
+    import time
+    named_tuple = time.localtime() # get struct_time
+    time_string = time.strftime("%H:%M:%S", named_tuple)
+
+    import json
+    data = json.dumps({'time': time_string, "url": environ["HTTP_HOST"]})
+    bdata = bytes(data, 'utf-8')
+
     start_response("200 OK", [
-    ("Content-Type", "text/plain"),
-    ("Content-Length", str(len(data)))
+        ("Content-type", "application/json")
     ])
-    return iter([data])
+    return [bdata]

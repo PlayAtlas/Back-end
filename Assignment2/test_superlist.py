@@ -4,7 +4,7 @@ import superlist as sl
 class TestInputValidation(unittest.TestCase):
     def compare(self, mylist1, mylist2):
         self.assertEqual(mylist1, mylist2) #сравниваем суммы элементов
-        for i in range(len(mylist1)): #сравниваем поэлементно:
+        for i in range(len(mylist1)): #сравниваем поэлементно
             self.assertEqual(mylist1[i], mylist2[i])
 
     def test_arithmetic(self):
