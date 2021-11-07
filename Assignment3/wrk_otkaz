@@ -1,0 +1,35 @@
+Last login: Sun Nov  7 22:26:42 on ttys003
+playatlas@MacBook-Pro-Rinat ~ % wrk -t5000 -c5000 -d30s --latency http://localhost/api/                     
+unable to create thread 1278: Too many open files
+playatlas@MacBook-Pro-Rinat ~ % wrk -t20 -c5000 -d30s --latency http://localhost/api/
+Running 30s test @ http://localhost/api/
+  20 threads and 5000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   868.87ms  370.13ms   1.72s    65.82%
+    Req/Sec    27.17     41.40   230.00     90.75%
+  Latency Distribution
+     50%  873.02ms
+     75%    1.10s 
+     90%    1.43s 
+     99%    1.70s 
+  1341 requests in 30.10s, 293.55KB read
+  Socket errors: connect 2465, read 117244, write 0, timeout 42
+  Non-2xx or 3xx responses: 86
+Requests/sec:     44.55
+Transfer/sec:      9.75KB
+playatlas@MacBook-Pro-Rinat ~ % wrk -t5000 -c5000 -d30s --latency http://localhost/api/
+unable to create thread 1278: Too many open files
+playatlas@MacBook-Pro-Rinat ~ % wrk -t5000 -c5000 -d30s --latency http://localhost/api/
+unable to create thread 1278: Too many open files
+playatlas@MacBook-Pro-Rinat ~ % 
+
+
+
+
+
+
+
+
+
+
+
