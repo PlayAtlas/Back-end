@@ -1,0 +1,84 @@
+Last login: Sun Nov  7 01:09:17 on ttys002
+playatlas@MacBook-Pro-Rinat ~ % wrk -t12 -c400 -d30s --latency http://localhost/
+Running 30s test @ http://localhost/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    17.41ms    5.94ms 102.88ms   93.36%
+    Req/Sec     1.94k   328.50     2.32k    87.53%
+  Latency Distribution
+     50%   15.93ms
+     75%   17.30ms
+     90%   20.38ms
+     99%   46.99ms
+  694962 requests in 30.02s, 204.13MB read
+  Socket errors: connect 0, read 384, write 0, timeout 0
+  Non-2xx or 3xx responses: 694962
+Requests/sec:  23147.82
+Transfer/sec:      6.80MB
+playatlas@MacBook-Pro-Rinat ~ % wrk -t12 -c5000 -d30s --latency http://localhost/
+Running 30s test @ http://localhost/
+  12 threads and 5000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   265.12ms  185.32ms 952.13ms   83.55%
+    Req/Sec    66.32     63.46   232.00     87.60%
+  Latency Distribution
+     50%  190.96ms
+     75%  289.39ms
+     90%  555.17ms
+     99%  918.07ms
+  4068 requests in 30.10s, 1.19MB read
+  Socket errors: connect 2449, read 141688, write 0, timeout 0
+  Non-2xx or 3xx responses: 4068
+Requests/sec:    135.16
+Transfer/sec:     40.65KB
+playatlas@MacBook-Pro-Rinat ~ % wrk -t12 -c5000 -d30s --latency http://localhost/barsiq.jpg
+Running 30s test @ http://localhost/barsiq.jpg
+  12 threads and 5000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   274.87ms  148.15ms   1.40s    73.53%
+    Req/Sec   277.05    168.36     1.06k    68.55%
+  Latency Distribution
+     50%  245.62ms
+     75%  346.17ms
+     90%  490.57ms
+     99%  777.40ms
+  91904 requests in 30.10s, 12.90GB read
+  Socket errors: connect 2449, read 153313, write 245, timeout 1
+Requests/sec:   3052.93
+Transfer/sec:    438.76MB
+playatlas@MacBook-Pro-Rinat ~ % wrk -t12 -c5000 -d30s --latency http://localhost/api/      
+Running 30s test @ http://localhost/api/
+  12 threads and 5000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   124.64ms  159.69ms   1.39s    92.19%
+    Req/Sec   624.41    390.86     2.00k    65.71%
+  Latency Distribution
+     50%   80.44ms
+     75%  100.14ms
+     90%  155.28ms
+     99%  978.48ms
+  169731 requests in 30.06s, 50.75MB read
+  Socket errors: connect 2449, read 225595, write 836, timeout 0
+  Non-2xx or 3xx responses: 168893
+Requests/sec:   5647.03
+Transfer/sec:      1.69MB
+playatlas@MacBook-Pro-Rinat ~ % wrk -t12 -c5000 -d30s --latency http://localhost/    
+unable to connect to localhost:http Connection refused
+playatlas@MacBook-Pro-Rinat ~ % wrk -t12 -c5000 -d30s --latency http://localhost/api/
+unable to connect to localhost:http Connection refused
+playatlas@MacBook-Pro-Rinat ~ % wrk -t12 -c5000 -d30s --latency http://localhost:8000
+Running 30s test @ http://localhost:8000
+  12 threads and 5000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   123.00ms  122.37ms 992.93ms   96.66%
+    Req/Sec    10.48     13.95   125.00     89.46%
+  Latency Distribution
+     50%   96.19ms
+     75%  114.92ms
+     90%  149.05ms
+     99%  826.07ms
+  867 requests in 30.10s, 176.96KB read
+  Socket errors: connect 2449, read 232604, write 0, timeout 0
+Requests/sec:     28.80
+Transfer/sec:      5.88KB
+playatlas@MacBook-Pro-Rinat ~ % 
