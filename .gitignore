@@ -1,6 +1,6 @@
 .DS_Store
 notes.txt
 assignment1/.DS_Store
-assignment4/myvenv
+assignment4/myvenv/
 __pycache__/
 *.pyc
