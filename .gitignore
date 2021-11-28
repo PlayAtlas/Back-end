@@ -2,5 +2,6 @@
 notes.txt
 assignment1/.DS_Store
 assignment4/myvenv/
+assignment4/spreadsheets/application/local_settings.py
 __pycache__/
 *.pyc
