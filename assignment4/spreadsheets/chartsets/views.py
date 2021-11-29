@@ -11,11 +11,11 @@ all_chartsets = [
     ]
 
 #Создание объекта
-def create_chartset(request, chartset_id, chartset_name):
+def create_chartset(request):
     if request.method != 'POST':
         return HttpResponseNotAllowed(('POST',))
 
-    return JsonResponse({'id': chartset_id, 'charts': 0, 'name': chartset_name})
+    return JsonResponse({'id': request.POST.get('chartset_id'), 'charts': 0, 'name': request.POST.get('chartset_name')})
 
 #Список объектов
 def list_chartsets(request):
