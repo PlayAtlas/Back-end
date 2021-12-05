@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from rest_framework.routers import DefaultRouter
+
+from chartsets.views import ChartsetViewSet
+
+router = DefaultRouter()
+router.register(r'api/chartsets', ChartsetViewSet, basename='chartsets')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('chartsets/', include('chartsets.urls')),
     path('users/', include('users.urls')),
-
 ]
+
+urlpatterns += router.urls
