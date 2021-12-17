@@ -18,7 +18,11 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from chartsets.views import ChartsetViewSet
+from chartsets.views import ChartsetViewSet, сhs_search
+from users.views import usr_search
+
+from django.contrib.auth import views as auth_views
+from chartsets import views as views
 
 router = DefaultRouter()
 router.register(r'api/chartsets', ChartsetViewSet, basename='chartsets')
@@ -27,6 +31,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chartsets/', include('chartsets.urls')),
     path('users/', include('users.urls')),
+    path('login/', views.login, name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('social_auth/', include('social_django.urls', namespace='social')),
+    path('', views.home, name='home'),
+    path('api/search/chartsets', сhs_search, name='chartsets_search'),
+    path('api/search/users', usr_search, name='users_search'),
 ]
+
 
 urlpatterns += router.urls

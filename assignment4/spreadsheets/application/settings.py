@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'chartsets',
     'users',
     'rest_framework',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +129,24 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.instagram.InstagramOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+VK_APP_ID = ''  # App ID
+VK_API_SECRET = ''  # App Secret
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+os.path.join(BASE_DIR, 'static'),
+]
 
 try:
     from .local_settings import *
