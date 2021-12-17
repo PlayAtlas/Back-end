@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# celery conf
+CELERY_TIMEZONE = "Europe/Moscow"
+CELERY_TASK_TRACK_STARTES = True
+CELERY_TASK_TIME_LIMIT = 30*60
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'django-db'
 
 # Application definition
 
@@ -41,6 +47,7 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     'social_django',
+    'django_elasticsearch_dsl',
 ]
 
 MIDDLEWARE = [

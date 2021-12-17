@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET, require_POST
 from django.http import HttpResponseNotFound, HttpResponseForbidden
 from chartsets.models import Chartset
+from chartsets.tasks import email_admin
 from users.models import User
 from chartsets.serializers import ChartsetSerializer
 from rest_framework import serializers, viewsets
@@ -20,7 +21,11 @@ def create_chartset(request):
     #newchartset.userschartsets.add(request.user)
     newchartset.userschartsets.add(User.objects.get(first_name = 'ReAtlaz'))
     #не нужен сейв
-    return JsonResponse({'pk': newchartset.pk, 'name': request.POST.get('chartset_name')})
+    objinfo = {'pk': newchartset.pk, 'name': request.POST.get('chartset_name')}
+
+    email_admin(objinfo)
+    
+    return JsonResponse(objinfo)
 
 #Детальная информация об объекте---работает с авторизацией
 @login_required
@@ -101,9 +106,13 @@ class ChartsetViewSet(viewsets.ModelViewSet):
 
     @rest_login_required
     def create(self, request):
-        chartset = Chartset.objects.create(name=request.POST.get('chartset_name'))
+        chartset = Chartset.objects.create(name=request.POST.get('name'))
+        chartset.save()
         chartset.userschartsets.add(request.user)
         serializer = ChartsetSerializer(chartset)
+
+        email_admin.delay(serializer.data)
+
         return Response(serializer.data)
 
 @api_view(['GET'])
