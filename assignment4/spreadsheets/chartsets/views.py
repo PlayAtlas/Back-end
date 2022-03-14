@@ -23,7 +23,7 @@ def create_chartset(request):
     #не нужен сейв
     objinfo = {'pk': newchartset.pk, 'name': request.POST.get('chartset_name')}
 
-    email_admin(objinfo)
+    email_admin.delay(objinfo)
     
     return JsonResponse(objinfo)
 
